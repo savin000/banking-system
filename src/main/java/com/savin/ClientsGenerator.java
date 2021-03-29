@@ -11,7 +11,7 @@ import java.util.Random;
 public class ClientsGenerator implements Runnable {
     private static final Logger LOG = LogManager.getLogger();
 
-    private static final int SERVICE_TIME_BOUND = 15; // 60 seconds
+    private static final int SERVICE_TIME_BOUND = 5;
 
     private static final int TRANSACTION_AMOUNT_BOUND = 1000; // 1000$
 
@@ -61,11 +61,9 @@ public class ClientsGenerator implements Runnable {
 
     @Override
     public void run() {
-
-
         Client client = new Client(generateBankingOperationType(), generateTransactionAmount(), generateServicingTime());
 
-        int minimumClients = 1000;
+        int minimumClients = 50;
         Random random = new Random();
 
         Teller chosenTeller = tellers.get(random.nextInt(tellers.size()));
@@ -77,6 +75,8 @@ public class ClientsGenerator implements Runnable {
             }
         }
         chosenTeller.getClients().add(client);
-        LOG.info("Client added");
+        LOG.info("Client added [operation: {}, transaction: {}, servicing time: {}] to Teller {}",
+                client.getBankingOperationType(), client.getTransactionAmount(), client.getServicingTime(),
+                chosenTeller.getName());
     }
 }

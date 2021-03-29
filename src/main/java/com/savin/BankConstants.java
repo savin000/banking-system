@@ -12,6 +12,4 @@ public final class BankConstants {
     public static final int SERVICE_TIME = 10;
 
     public static final double TRANSACTION_AMOUNT = 1000; // 1000$
-
-    public static final int CLIENTS_PER_MINUTE = 1;
 }
