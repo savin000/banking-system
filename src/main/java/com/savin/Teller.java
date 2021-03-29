@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalTime;
 import java.time.temporal.ChronoField;
 import java.util.ArrayDeque;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
@@ -32,6 +31,7 @@ public class Teller implements Runnable {
 
     @Override
     public void run() {
+        LOG.info("Teller " + Thread.currentThread().getName() + " started his work");
         if (!clients.isEmpty()) {
             Client client = clients.poll();
             if (client.getBankingOperationType().equals(BankingOperationType.WITHDRAW)) {
@@ -53,7 +53,7 @@ public class Teller implements Runnable {
     private synchronized void topUpAnAccount(double transactionAmount, LocalTime servicingTime) throws InterruptedException {
         this.wait(servicingTime.getLong(ChronoField.SECOND_OF_DAY));
         cashOffice.setAccount(cashOffice.getAccount() + transactionAmount);
-        LOG.info("Денег в банке" + cashOffice.getAccount());
+        LOG.info("Денег в банке: " + cashOffice.getAccount());
         notify();
     }
 
@@ -61,7 +61,7 @@ public class Teller implements Runnable {
         if (cashOffice.getAccount() > transactionAmount) {
             wait(servicingTime.getLong(ChronoField.SECOND_OF_DAY));
             cashOffice.setAccount(cashOffice.getAccount() - transactionAmount);
-            LOG.info("Денег в банке" + cashOffice.getAccount());
+            LOG.info("Денег в банке: " + cashOffice.getAccount());
         } else {
             LOG.info("Клиенту отказано в обслуживании");
         }

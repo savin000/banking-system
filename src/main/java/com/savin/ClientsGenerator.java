@@ -1,13 +1,17 @@
 package com.savin;
 
 import com.savin.enums.BankingOperationType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Random;
 
 public class ClientsGenerator implements Runnable {
-    private static final int SERVICE_TIME_BOUND = 60; // 60 seconds
+    private static final Logger LOG = LogManager.getLogger();
+
+    private static final int SERVICE_TIME_BOUND = 15; // 60 seconds
 
     private static final int TRANSACTION_AMOUNT_BOUND = 1000; // 1000$
 
@@ -73,5 +77,6 @@ public class ClientsGenerator implements Runnable {
             }
         }
         chosenTeller.getClients().add(client);
+        LOG.info("Client added");
     }
 }
