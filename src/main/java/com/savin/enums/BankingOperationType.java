@@ -8,12 +8,12 @@ package com.savin.enums;
 public enum BankingOperationType {
 
     /**
-     *
+     * The client wants to cash out an account
      */
     WITHDRAW,
 
     /**
-     *
+     * The client wants to top up an account
      */
     DEPOSIT
 }
