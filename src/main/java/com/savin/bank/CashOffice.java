@@ -13,14 +13,14 @@ public class CashOffice {
     private double account;
 
     /**
-     * Creates a new Cash office with default account
+     * Creates a new cash office with default account
      */
     public CashOffice() {
         this.account = BankConstants.DEFAULT_ACCOUNT;
     }
 
     /**
-     * Creates a new Repository with the specified amount of money in the bank (account)
+     * Creates a new cash office with the specified amount of money in the bank (account)
      *
      * @param account specified account
      */
