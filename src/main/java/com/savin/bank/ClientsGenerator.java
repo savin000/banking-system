@@ -11,6 +11,8 @@ import java.util.Random;
 
 /**
  * This class generates new clients to simulate bank's work
+ *
+ * @author Mikhail Savin
  */
 public class ClientsGenerator implements Runnable {
     private static final Logger LOGGER = LogManager.getLogger();
