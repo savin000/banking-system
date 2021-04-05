@@ -1,4 +1,4 @@
-package com.savin;
+package com.savin.bank;
 
 /**
  * This class represents cash office of the bank
