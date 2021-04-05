@@ -70,25 +70,12 @@ public class ClientsGenerator implements Runnable {
      */
     @Override
     public void run() {
-        while (true) {
-            Client client = new Client(generateBankingOperationType(), generateTransactionAmount(), generateServicingTime());
+        Client client = new Client(generateBankingOperationType(), generateTransactionAmount(), generateServicingTime());
 
-            Teller chosenTeller = bank.chooseTeller();
-            chosenTeller.getClients().add(client);
-            LOGGER.info("Client added [operation: {}, transaction: {}, servicing time: {}] to Teller {}",
-                    client.getBankingOperationType(), client.getTransactionAmount(), client.getServicingTime(),
-                    chosenTeller.getName());
-        }
-//        chosenQueue.add(client);
-//        //chosenQueue.notify();
-////        if (!chosenQueue.isEmpty()) {
-////            chosenQueue.notify();
-////        }
-//        //chosenTeller.notify();
-//        //chosenQueue.notify();
-//        LOG.info("Client added [operation: {}, transaction: {}, servicing time: {}] to Teller {}",
-//                client.getBankingOperationType(), client.getTransactionAmount(), client.getServicingTime(),
-//                chosenTeller.getName());
-//        chosenQueue.notify();
+        Teller chosenTeller = bank.chooseTeller();
+        chosenTeller.addClient(client);
+        LOGGER.info("Client added [operation: {}, transaction: {}, servicing time: {}] to Teller {}",
+                client.getBankingOperationType(), client.getTransactionAmount(), client.getServicingTime(),
+                chosenTeller.getName());
     }
 }
