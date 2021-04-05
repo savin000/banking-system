@@ -38,6 +38,20 @@ public class Bank {
     }
 
     /**
+     * @return this bank's cash office
+     */
+    public CashOffice getCashOffice() {
+        return cashOffice;
+    }
+
+    /**
+     * @return this bank's list of tellers
+     */
+    public List<Teller> getTellers() {
+        return tellers;
+    }
+
+    /**
      * Creates a new Bank with the specified amount of money in the bank and number of tellers
      *
      * @param bankAccount specified bank account (amount of money in the bank)
