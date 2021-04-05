@@ -1,23 +1,43 @@
 package com.savin;
 
+/**
+ * This class represents cash office of the bank
+ *
+ * @author Mikhail Savin
+ */
 public class CashOffice {
 
-    private static final double DEFAULT_ACCOUNT = 100000; // 100_000$
-
+    /**
+     * The amount of money in the bank
+     */
     private double account;
 
+    /**
+     * Creates a new Cash office with default account
+     */
     public CashOffice() {
-        this.account = DEFAULT_ACCOUNT;
+        this.account = BankConstants.DEFAULT_ACCOUNT;
     }
 
+    /**
+     * Creates a new Repository with the specified amount of money in the bank (account)
+     *
+     * @param account specified account
+     */
     public CashOffice(double account) {
         this.account = account;
     }
 
+    /**
+     * @return current account
+     */
     public double getAccount() {
         return account;
     }
 
+    /**
+     * @param account cash office's account to set
+     */
     public void setAccount(double account) {
         this.account = account;
     }
